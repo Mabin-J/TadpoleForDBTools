@@ -241,8 +241,12 @@ public class TadpoleSQLManager extends AbstractTadpoleManager {
 			tadpoleMetaData.setKeywords(metaData.getSQLKeywords());
 		}
 						
-		tadpoleMetaData.setDbMajorVersion(metaData.getDatabaseMajorVersion());
-		tadpoleMetaData.setMinorVersion(metaData.getDatabaseMinorVersion());
+		try {
+			tadpoleMetaData.setDbMajorVersion(metaData.getDatabaseMajorVersion());
+			tadpoleMetaData.setMinorVersion(metaData.getDatabaseMinorVersion());
+		} catch (SQLException e) {
+			logger.warn("Get DB Version Error", e);
+		}
 		dbMetadata.put(searchKey, tadpoleMetaData);
 	}
 	
