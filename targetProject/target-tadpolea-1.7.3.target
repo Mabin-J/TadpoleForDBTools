@@ -46,7 +46,7 @@
 <unit id="org.eclipse.babel.nls_rt.rap_sk.feature.group" version="4.5.0.v20151128060001"/>
 <unit id="org.eclipse.babel.nls_rt.rap_id.feature.group" version="4.5.0.v20151128060001"/>
 <unit id="org.eclipse.babel.nls_rt.rap_ru.feature.group" version="4.5.0.v20151128060001"/>
-<repository location="http://download.eclipse.org/technology/babel/update-site/R0.13.1/mars/"/>
+<repository location="http://archive.eclipse.org/technology/babel/update-site/R0.13.1/mars/"/>
 </location>
 <location path="${project_loc:/targetProject}/multiTab" type="Directory"/>
 <location path="${project_loc:/targetProject}/test" type="Directory"/>
@@ -60,7 +60,7 @@
 <unit id="org.eclipse.emf.rap.sdk.feature.group" version="2.11.1.v20150806-0404"/>
 <repository location="http://download.eclipse.org/releases/mars"/>
 </location>
-<location path="${project_loc:/targetProject}/rap-3.2.0-N-20161019-2331" type="Directory"/>
+<location path="${project_loc:/targetProject}/rap-3.1.0-N-20150914-1435" type="Directory"/>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.rap.gef.feature.feature.group" version="0.1.0.20161013-1425"/>
 <repository location="http://download.eclipse.org/rt/rap/incubator/nightly/"/>
