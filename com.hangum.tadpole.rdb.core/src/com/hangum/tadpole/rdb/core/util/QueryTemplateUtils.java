@@ -22,6 +22,7 @@ import com.hangum.tadpole.engine.sql.template.HIVEDMLTemplate;
 import com.hangum.tadpole.engine.sql.template.MSSQLDMLTemplate;
 import com.hangum.tadpole.engine.sql.template.MySQLDMLTemplate;
 import com.hangum.tadpole.engine.sql.template.OracleDMLTemplate;
+import com.hangum.tadpole.engine.sql.template.PhoenixDMLTemplate;
 import com.hangum.tadpole.engine.sql.template.PostgreDMLTemplate;
 import com.hangum.tadpole.engine.sql.template.SQLiteDMLTemplate;
 import com.hangum.tadpole.engine.sql.template.TAJODMLTemplate;
@@ -165,7 +166,13 @@ public class QueryTemplateUtils {
 			} else if(initAction == PublicTadpoleDefine.OBJECT_TYPE.TRIGGERS) {
 				defaultStr =  AltibaseDMLTemplate.TMP_CREATE_TRIGGER_STMT;
 			}
-		}
+		} else if(DBGroupDefine.PHOENIX_GROUP == userDB.getDBGroup()) {
+			if(initAction == PublicTadpoleDefine.OBJECT_TYPE.TABLES) {
+				defaultStr =  PhoenixDMLTemplate.TMP_CREATE_TABLE_STMT;
+			} else if(initAction == PublicTadpoleDefine.OBJECT_TYPE.VIEWS) {
+				defaultStr =  PhoenixDMLTemplate.TMP_CREATE_VIEW_STMT;
+			}
+		} 
 		
 		if(StringUtils.isBlank(defaultStr)){
 			defaultStr =  initAction.name() + "의 CREATE문 템플릿이 정의되지 않았습니다.";

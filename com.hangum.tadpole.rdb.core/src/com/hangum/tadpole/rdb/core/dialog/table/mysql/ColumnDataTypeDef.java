@@ -295,6 +295,7 @@ public class ColumnDataTypeDef {
 		case TADPOLE_SYSTEM_DEFAULT:
 		case TADPOLE_SYSTEM_MYSQL_DEFAULT:
 		case TAJO_DEFAULT:
+		case PHOENIX_DEFAULT:
 		default:
 			for (String name : defaultNameMap.values()) {
 				result += name + ",";

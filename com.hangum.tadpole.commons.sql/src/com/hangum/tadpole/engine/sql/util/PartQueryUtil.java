@@ -23,6 +23,7 @@ import com.hangum.tadpole.engine.sql.template.OracleDMLTemplate;
 import com.hangum.tadpole.engine.sql.template.PostgreDMLTemplate;
 import com.hangum.tadpole.engine.sql.template.SQLiteDMLTemplate;
 import com.hangum.tadpole.engine.sql.template.TAJODMLTemplate;
+import com.hangum.tadpole.engine.sql.template.PhoenixDMLTemplate;
 
 /**
  * 각 DBMS에 맞는 쿼리문을 생성합니다.
@@ -60,6 +61,8 @@ public class PartQueryUtil {
 			requestQuery = String.format(PostgreDMLTemplate.TMP_GET_PARTDATA, strQuery,  intStartPos, intRowCnt);
 		} else if(DBGroupDefine.ALTIBASE_GROUP == userDB.getDBGroup()) {
 			requestQuery = String.format(AltibaseDMLTemplate.TMP_GET_PARTDATA, strQuery,  intStartPos, intRowCnt);
+		} else if(DBGroupDefine.PHOENIX_GROUP == userDB.getDBGroup()) {
+			requestQuery = String.format(PhoenixDMLTemplate.TMP_GET_PARTDATA, strQuery,  intStartPos, intRowCnt);
 //		} else if(DBDefine.MSSQL_DEFAULT == userDB.getDBDefine() | DBDefine.MSSQL_8_LE_DEFAULT == userDB.getDBDefine()) {
 //			requestQuery = String.format(MSSQLDMLTemplate.TMP_GET_PARTDATA, strQuery, intRowCnt, intStartPos+intRowCnt);
 //			
@@ -100,6 +103,8 @@ public class PartQueryUtil {
 			resultQuery = TAJODMLTemplate.TMP_EXPLAIN_EXTENDED + query;
 		} else if(DBGroupDefine.POSTGRE_GROUP == userDB.getDBGroup()) {
 			resultQuery = PostgreDMLTemplate.TMP_EXPLAIN_EXTENDED + query;
+		} else if(DBGroupDefine.PHOENIX_GROUP == userDB.getDBGroup()) {
+			resultQuery = PhoenixDMLTemplate.TMP_EXPLAIN_EXTENDED + query;
 			
 		} else {
 			throw new Exception("Not Support DBMS Query Plan.");

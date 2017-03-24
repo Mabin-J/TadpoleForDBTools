@@ -78,6 +78,9 @@ public class UserDBLabelProvider extends LabelProvider {
 			else if(DBDefine.HIVE_DEFAULT == dbType) 
 				return ResourceManager.getPluginImage(PLUGIN_ID, "resources/icons/hive-add.png"); //$NON-NLS-1$
 			
+			//else if(DBDefine.PHOENIX_DEFAULT == dbType) 
+			//	return ResourceManager.getPluginImage(PLUGIN_ID, "resources/icons/phoenix-add.png"); //$NON-NLS-1$
+			
 			else
 				return ResourceManager.getPluginImage(PLUGIN_ID, "resources/icons/database-add.png"); //$NON-NLS-1$
 			

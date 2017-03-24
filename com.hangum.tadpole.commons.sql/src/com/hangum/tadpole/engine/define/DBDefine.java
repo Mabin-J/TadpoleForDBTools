@@ -57,6 +57,9 @@ public enum DBDefine {
 	
 	/** Aamazon RDS */
 //	AMAZONRDS_DEFAULT
+	
+	/** Apache Phoenix */
+	, PHOENIX_DEFAULT
 	;	
 	
 	private static final Logger logger = Logger.getLogger(DBDefine.class);
@@ -91,6 +94,7 @@ public enum DBDefine {
 			case HIVE2_DEFAULT:			return prefix + "HIVE2Config.xml";
 			case TAJO_DEFAULT:			return prefix  + "TAJOConfig.xml";
 			case ALTIBASE_DEFAULT:	    return prefix + "AltibaseConfig.xml";
+			case PHOENIX_DEFAULT:	    return prefix + "PhoenixConfig.xml";
 			default:
 				return "Doesn't define database configuration";
 		}
@@ -128,6 +132,7 @@ public enum DBDefine {
 		
 		else if(type.equalsIgnoreCase("Apache Tajo")) 	return TAJO_DEFAULT;
 		else if(type.equalsIgnoreCase("Altibase"))       return ALTIBASE_DEFAULT;
+		else if(type.equalsIgnoreCase("Apache Phoenix"))       return PHOENIX_DEFAULT;
 		else return null;
 	}
 	
@@ -165,6 +170,8 @@ public enum DBDefine {
 			case TAJO_DEFAULT:		return "org.apache.tajo.jdbc.TajoDriver";
 			
 			case ALTIBASE_DEFAULT:   return "Altibase.jdbc.driver.AltibaseDriver"; 
+			
+			case PHOENIX_DEFAULT:   return "org.apache.phoenix.jdbc.PhoenixDriver";
 			
 			default:
 				return "undefine class";
@@ -213,6 +220,8 @@ public enum DBDefine {
 			/* Altibase JDBC connection string: jdbc:Altibase://ipaddr.port/dbname */
 			case ALTIBASE_DEFAULT:   return "jdbc:Altibase://%s:%s/%s"; 
 			
+			case PHOENIX_DEFAULT:   return "jdbc:phoenix://%s:%s/%s";
+			
 			default:
 				return "undefine db";
 		}
@@ -246,6 +255,7 @@ public enum DBDefine {
 			
 			case TAJO_DEFAULT: 			return "Apache Tajo";
 			case ALTIBASE_DEFAULT:      return "Altibase";
+			case PHOENIX_DEFAULT:      	return "Apache Phoenix";
 			default:
 				return "undefine db";
 		}
@@ -273,6 +283,8 @@ public enum DBDefine {
 		} else if(this == DBDefine.TAJO_DEFAULT) {
 			return "\\d";
 		} else if(this == DBDefine.ALTIBASE_DEFAULT) {
+			return "SELECT 1";
+		} else if(this == DBDefine.PHOENIX_DEFAULT) {
 			return "SELECT 1";
 		} else {
 			return "SELECT 1";
@@ -312,6 +324,8 @@ public enum DBDefine {
 			extension += "tibero";
 		} else if(this == DBDefine.MONGODB_DEFAULT) {
 			extension += "mongo";
+		} else if(this == DBDefine.PHOENIX_DEFAULT) {
+			extension += "phoenix";
 		} else {
 			extension += "sql"; //$NON-NLS-1$
 		}
@@ -346,6 +360,7 @@ public enum DBDefine {
 		
 		case TAJO_DEFAULT: 			return DBVariableDefine.TAJO_VARIABLE;
 		case ALTIBASE_DEFAULT:      return DBVariableDefine.ALTIBASE_VARIABLE;
+		case PHOENIX_DEFAULT:      return DBVariableDefine.PHOENIX_VARIABLE;
 		default:
 			return new String[]{};
 		}
@@ -427,6 +442,7 @@ public enum DBDefine {
 //		supportDb.add(AGENSGRAPH_DEFAULT);
 		supportDb.add(POSTGRE_DEFAULT);
 		supportDb.add(SQLite_DEFAULT);
+		supportDb.add(PHOENIX_DEFAULT);
 		
 		return supportDb;
 	}
